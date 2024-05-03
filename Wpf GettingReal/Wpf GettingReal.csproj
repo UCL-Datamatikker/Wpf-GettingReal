@@ -9,4 +9,11 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="App Layer\" />
+    <Folder Include="Domain Layer\" />
+    <Folder Include="VievModels\" />
+    <Folder Include="Views\" />
+  </ItemGroup>
+
 </Project>
