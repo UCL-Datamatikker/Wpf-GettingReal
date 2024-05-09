@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Label Content="Welcome" />
+        <Button Name="btnMakeCompany" Content="Opret Virksomhed" Height="30" Width="120" Click="btnMakeCompany_Click"/>
     </Grid>
 </Window>
