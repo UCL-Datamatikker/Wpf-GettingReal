@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GettingReal
+namespace Wpf_GettingReal.App_Layer
 {
     public class Income
     {

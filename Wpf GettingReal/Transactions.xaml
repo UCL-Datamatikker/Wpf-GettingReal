@@ -1,0 +1,14 @@
+﻿<Window x:Class="Wpf_GettingReal.Transactions"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_GettingReal"
+        mc:Ignorable="d"
+        Title="Transactions" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="Income" Content="Registrér indtægt" HorizontalAlignment="Left" Margin="300,50,0,0" VerticalAlignment="Top" Click="Income_Click"/>
+        <Button x:Name="Expense" Content="Registrér udgift" HorizontalAlignment="Left" Margin="300,100,0,0" VerticalAlignment="Top" Click="Expense_Click"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,14 @@
+﻿<Window x:Class="Wpf_GettingReal.Expense"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_GettingReal"
+        mc:Ignorable="d"
+        Title="Expense" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="Amount" HorizontalAlignment="Left" Margin="300,50,0,0" TextWrapping="Wrap" Text="Beløb" VerticalAlignment="Top" Width="120" TextChanged="Amount_TextChanged"/>
+        <TextBox x:Name="PaymentMethod" HorizontalAlignment="Left" Margin="300,100,0,0" TextWrapping="Wrap" Text="Betalingsmetode" VerticalAlignment="Top" Width="120" TextChanged="PaymentMethod_TextChanged"/>
+        <TextBox x:Name="PaymentStatus" HorizontalAlignment="Left" Margin="300,150,0,0" TextWrapping="Wrap" Text="Betalingsstatus" VerticalAlignment="Top" Width="120" TextChanged="PaymentStatus_TextChanged"/>
+    </Grid>
+</Window>
