@@ -22,12 +22,14 @@ namespace Wpf_GettingReal
         public MainWindow()
         {
             InitializeComponent();
+
             controller = new Controller();
         }
 
         private void btnMakeCompany_Click(object sender, RoutedEventArgs e)
         {
             controller.
+
         }
     }
 }
