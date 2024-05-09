@@ -19,6 +19,7 @@ namespace Wpf_GettingReal
         public MainWindow()
         {
             InitializeComponent();
+            
         }
     }
 }

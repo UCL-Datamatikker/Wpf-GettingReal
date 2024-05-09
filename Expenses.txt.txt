@@ -1,0 +1,14 @@
+Date: 05-05-2024 08:46:32
+Description: Løn
+ID: 82926
+Amount: 20000
+Payment Method: Bankoverførsel
+Payment Status: Gennemført
+
+Date: 09-05-2024 07:43:30
+Description: Resturantbesøg
+ID: 44998
+Amount: 30
+Payment Method: Kort
+Payment Status: Gennemført
+
