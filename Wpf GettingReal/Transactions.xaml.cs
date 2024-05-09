@@ -26,12 +26,13 @@ namespace Wpf_GettingReal
 
         private void Income_Click(object sender, RoutedEventArgs e)
         {
-
+            // GO TO: Income.xaml
+            
         }
 
         private void Expense_Click(object sender, RoutedEventArgs e)
         {
-
+            // GO TO: Expense.caml
         }
     }
 }

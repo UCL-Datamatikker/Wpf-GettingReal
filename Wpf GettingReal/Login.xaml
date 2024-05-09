@@ -1,0 +1,15 @@
+﻿<Window x:Class="Wpf_GettingReal.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_GettingReal"
+        mc:Ignorable="d"
+        Title="Login" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="Name" HorizontalAlignment="Left" Margin="300,50,0,0" TextWrapping="Wrap" Text="Navn" VerticalAlignment="Top" Width="120" TextChanged="Name_TextChanged"/>
+        <TextBox x:Name="Password" HorizontalAlignment="Left" Margin="300,100,0,0" TextWrapping="Wrap" Text="Kodeord" VerticalAlignment="Top" Width="120" TextChanged="Password_TextChanged"/>
+        <Button x:Name="Login1" Content="Log ind" HorizontalAlignment="Left" Margin="300,150,0,0" VerticalAlignment="Top" Click="Login1_Click"/>
+
+    </Grid>
+</Window>

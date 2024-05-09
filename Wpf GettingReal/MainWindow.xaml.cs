@@ -23,12 +23,12 @@ namespace Wpf_GettingReal
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-
+            // GO TO: RegisterCompany.xaml
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-
+            // GO TO: Login.xaml
         }
     }
 }

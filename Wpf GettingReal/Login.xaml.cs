@@ -15,28 +15,28 @@ using System.Windows.Shapes;
 namespace Wpf_GettingReal
 {
     /// <summary>
-    /// Interaction logic for Menu.xaml
+    /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class Menu : Window
+    public partial class Login : Window
     {
-        public Menu()
+        public Login()
         {
             InitializeComponent();
         }
 
-        private void Transactions_Click(object sender, RoutedEventArgs e)
+        private void Name_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // GO TO: Transactions.xaml
+            // Check for existense
         }
 
-        private void Balance_Click(object sender, RoutedEventArgs e)
+        private void Password_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // Show balance
+            // Check for match
         }
 
-        private void Commit_Click(object sender, RoutedEventArgs e)
+        private void Login1_Click(object sender, RoutedEventArgs e)
         {
-            // Registrér årsregnskab
+            // GO TO: Menu.xaml
         }
     }
 }

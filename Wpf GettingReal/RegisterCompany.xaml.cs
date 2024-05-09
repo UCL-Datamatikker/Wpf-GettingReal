@@ -26,27 +26,27 @@ namespace Wpf_GettingReal
 
         private void Name_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            // Write to file
         }
 
         private void CVR_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            // Write to file
         }
 
         private void Adress_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            // Write to file
         }
 
         private void Telephone_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            // Write to file
         }
 
         private void E_Mail_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            // Write to file
         }
     }
 }

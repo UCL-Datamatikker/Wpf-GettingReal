@@ -25,17 +25,17 @@ namespace Wpf_GettingReal
         }
         private void Amount_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            // Write to file
         }
 
         private void PaymentMethod_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            // Write to file
         }
 
         private void PaymentStatus_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            // Write to file
         }
     }
 }
