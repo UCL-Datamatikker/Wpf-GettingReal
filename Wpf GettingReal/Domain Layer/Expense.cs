@@ -18,6 +18,8 @@ namespace Wpf_GettingReal.Domain_Layer
         public float Amount { get; set; }
         public string PaymentMethod { get; set; }
         public string PaymentStatus { get; set; }
+        
+        private static List<int> usedIds = new List<int>();
 
         public void RegisterExpense()
         {
@@ -28,7 +30,18 @@ namespace Wpf_GettingReal.Domain_Layer
             Description = Console.ReadLine();
 
             Random rnd = new Random();
-            IdNo = rnd.Next(10000, 99999);
+            bool uniqueId = false;
+
+            while (!uniqueId)
+            {
+                IdNo = rnd.Next(10000, 99999);
+
+                if (!usedIds.Contains(IdNo))
+                {
+                    uniqueId = true;
+                    usedIds.Add(IdNo);
+                }
+            }
 
             Console.WriteLine("Enter amount: ");
             Amount = float.Parse(Console.ReadLine());
