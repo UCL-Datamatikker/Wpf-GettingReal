@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpf_GettingReal.App_Layer;
 
 namespace Wpf_GettingReal
 {
@@ -16,9 +17,17 @@ namespace Wpf_GettingReal
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        Controller controller;
         public MainWindow()
         {
             InitializeComponent();
+            controller = new Controller();
+        }
+
+        private void btnMakeCompany_Click(object sender, RoutedEventArgs e)
+        {
+            controller.
         }
     }
 }

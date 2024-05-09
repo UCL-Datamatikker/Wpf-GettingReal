@@ -10,9 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="App Layer\" />
     <Folder Include="VievModels\" />
     <Folder Include="Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
 </Project>

@@ -5,8 +5,8 @@ namespace Wpf_GettingReal.Domain_Layer
     public class Account
     {
 
-        private string AccountName { get; set; }
-        private AccountType AccountId { get; set; }
+        public string AccountName { get; set; }
+        public AccountType AccountId { get; set; }
         private double AccountBalance { get; set; }
         private List<Posting> Postings = new List<Posting>();
 
