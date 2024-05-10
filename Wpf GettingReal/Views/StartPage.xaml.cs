@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpf_GettingReal.App_Layer;
 using Wpf_GettingReal.Domain_Layer;
 
 namespace Wpf_GettingReal.Views
@@ -21,6 +22,8 @@ namespace Wpf_GettingReal.Views
     /// </summary>
     public partial class StartPage : Page
     {
+        private Controller controller;
+
         public string CompanyName { get; set; }
         public int CVR { get; set; }
         public string Email { get; set; }
@@ -40,7 +43,11 @@ namespace Wpf_GettingReal.Views
             
         }
 
-        
+        public StartPage(Controller controller)
+        {
+            this.controller = controller;
+        }
+
         private void SetCompanyData()
         {
             lblName.Content = CompanyName;

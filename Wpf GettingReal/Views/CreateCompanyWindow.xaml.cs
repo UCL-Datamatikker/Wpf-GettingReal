@@ -14,28 +14,22 @@ namespace Wpf_GettingReal
             
             Owner = parent;
             InitializeComponent();
-            Data = new string[5];
+            Data = new string[6];
             btnOK.IsEnabled = false; 
         }
 
         private void SetCompanyProperties()
         {
-            if (tbName.Text != "" && tbAddr.Text != "" && tbCVR.Text != "" && tbEmail.Text != "" && tbPhone.Text != "")
+            if (tbName.Text != "" && tbAddr.Text != "" && tbCVR.Text != "" && tbEmail.Text != "" && tbPhone.Text != "" && tbPassword.Text != "")
             {
                 Data[0] = tbName.Text;
                 Data[1] = tbCVR.Text;
                 Data[2] = tbAddr.Text;
                 Data[3] = tbPhone.Text;
                 Data[4] = tbEmail.Text;
-
+                Data[5] = tbPassword.Text;
                 Success = true;
             }
-            else
-            {
-                
-               Close();
-            }
-
         }
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
@@ -58,7 +52,7 @@ namespace Wpf_GettingReal
 
         private void EnableOkBtn()
         {
-            if (tbName.Text != "" && tbAddr.Text != "" && tbCVR.Text != "" && tbEmail.Text != "" && tbPhone.Text != "")
+            if (tbName.Text != "" && tbAddr.Text != "" && tbCVR.Text != "" && tbEmail.Text != "" && tbPhone.Text != "" && tbPassword.Text != "")
             {
                 btnOK.IsEnabled = true;
             }

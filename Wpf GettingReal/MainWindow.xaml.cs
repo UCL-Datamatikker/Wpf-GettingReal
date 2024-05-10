@@ -17,17 +17,18 @@ namespace Wpf_GettingReal
         {
             InitializeComponent();
             controller = new Controller();
+
+            LoginPage loginPage = new LoginPage(this, controller);
+            NoCompanyPage noCompanyPage = new NoCompanyPage(controller, this);
+
             Company? company = controller.GetCompany();
             if (company != null)
             {
-                Main.Content = new StartPage(company);
-                
-            } else
+                Main.NavigationService.Navigate(loginPage);
+            } 
+            else
             {
-                btnCompany.IsEnabled = false;
-                btnExpense.IsEnabled = false;
-                btnIncome.IsEnabled = false;
-                Main.Content = new NoCompanyPage(controller, this);
+                Main.NavigationService.Navigate(noCompanyPage);
             }
         }
 
@@ -40,7 +41,11 @@ namespace Wpf_GettingReal
 
         private void btnCompany_Click(object sender, RoutedEventArgs e)
         {
-
+            Company company = controller.GetCompany();
+            if(company != null)
+            {
+                Main.Content = new StartPage(company);
+            }
         }
 
         private void btnIncome_Click(object sender, RoutedEventArgs e)

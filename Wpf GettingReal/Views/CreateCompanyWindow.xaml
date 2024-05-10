@@ -13,13 +13,16 @@
         <Label Content="Addresse:" HorizontalAlignment="Left" Margin="155,213,0,0" VerticalAlignment="Top"/>
         <Label Content="Telepon Nr.:" HorizontalAlignment="Left" Margin="155,239,0,0" VerticalAlignment="Top"/>
         <Label Content="Email:" HorizontalAlignment="Left" Margin="155,265,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lPassword" Content="Password:" HorizontalAlignment="Left" Margin="154,291,0,0" VerticalAlignment="Top"/>
         <TextBox Name="tbName" HorizontalAlignment="Center" Margin="0,155,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tb_TextChanged"/>
         <TextBox Name="tbCVR"  HorizontalAlignment="Center" Margin="0,186,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tb_TextChanged"/>
         <TextBox Name="tbAddr" HorizontalAlignment="Center" Margin="0,216,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tb_TextChanged"/>
         <TextBox Name="tbPhone" HorizontalAlignment="Center" Margin="0,243,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tb_TextChanged"/>
         <TextBox Name="tbEmail" HorizontalAlignment="Center" Margin="0,269,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tb_TextChanged"/>
+        <TextBox x:Name="tbPassword" HorizontalAlignment="Center" Margin="0,295,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="tb_TextChanged"/>
         <Button Name="btnOK" Content="OK" HorizontalAlignment="Left" Margin="559,352,0,0" VerticalAlignment="Top" Width="50" Click="btnOK_Click"/>
         <Button Name="btnBack" Content="Tilbage" HorizontalAlignment="Left" Margin="630,352,0,0" VerticalAlignment="Top" Width="50" Click="btnBack_Click"/>
+
 
     </Grid>
 </Window>
