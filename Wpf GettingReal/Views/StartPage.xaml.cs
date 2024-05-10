@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpf_GettingReal.App_Layer;
 using Wpf_GettingReal.Domain_Layer;
 
 namespace Wpf_GettingReal.Views
@@ -27,22 +28,29 @@ namespace Wpf_GettingReal.Views
         public int PhoneNumber { get; set; }
         public string Address { get; set; }
 
-        public StartPage(Company company)
+        private Controller Controller { get; set; }
+        private Company Company { get; set; }
+
+        public StartPage(Company company, Controller controller)
         {
             InitializeComponent();
+            this.Company = company;
+            this.Controller = controller;
+            
+
+            SetCompanyData(company);
+            
+        }
+
+        
+        private void SetCompanyData(Company company)
+        {
             CompanyName = company.Name;
             CVR = company.CVR;
             Email = company.Email;
             PhoneNumber = company.Telephone;
             Address = company.Address;
 
-            SetCompanyData();
-            
-        }
-
-        
-        private void SetCompanyData()
-        {
             lblName.Content = CompanyName;
             lblCVR.Content = CVR;
             lblEmail.Content = Email;
@@ -52,15 +60,18 @@ namespace Wpf_GettingReal.Views
         }
 
 
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            
-        }
+            MainWindow mainWindow = new MainWindow();
+            EditCompanyWindow editCompanyWindow = new EditCompanyWindow(Company);
+            editCompanyWindow.ShowDialog();
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-          
+            if (editCompanyWindow.Success)
+            {
+                string[] Data = editCompanyWindow.Data;
+                Company = Controller.UpdateCompanyInfo(Data[0], int.Parse(Data[1]), Data[2], int.Parse(Data[3]), Data[4]);
+                SetCompanyData(Company);
+            }
         }
     }
    

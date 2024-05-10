@@ -13,14 +13,15 @@ namespace Wpf_GettingReal
     {
         
         Controller controller;
+        Company? company;
         public MainWindow()
         {
             InitializeComponent();
             controller = new Controller();
-            Company? company = controller.GetCompany();
+            company = controller.GetCompany();
             if (company != null)
             {
-                Main.Content = new StartPage(company);
+                Main.Content = new StartPage(company, controller);
                 
             } else
             {
@@ -40,7 +41,7 @@ namespace Wpf_GettingReal
 
         private void btnCompany_Click(object sender, RoutedEventArgs e)
         {
-
+            Main.Content = new StartPage(company!, controller);
         }
 
         private void btnIncome_Click(object sender, RoutedEventArgs e)

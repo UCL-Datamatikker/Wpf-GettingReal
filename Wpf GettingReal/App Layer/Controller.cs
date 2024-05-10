@@ -5,7 +5,7 @@ namespace Wpf_GettingReal.App_Layer
 {
     public class Controller
     {
-        private List<AccountPlan> AccountPlanRepo;
+        private List<AccountPlan>? AccountPlanRepo = new List<AccountPlan>();
         private DataHandler dataHandler;
         Company? company;
         
@@ -14,8 +14,8 @@ namespace Wpf_GettingReal.App_Layer
         {
            
             dataHandler = new DataHandler("AccountPlans.txt", "Company.txt");
-            AccountPlanRepo = dataHandler.GetAllAccountingYears();
             company = dataHandler.GetCompany();
+            AccountPlanRepo = company?.GetAllAccountPlans();
         }
 
         public void CreateCompany(string name, int cvr, string address, int telephone, string email)
@@ -26,7 +26,7 @@ namespace Wpf_GettingReal.App_Layer
             
             Company company = new Company(name, cvr, address, telephone, email);
 
-            if (AccountPlanRepo.Count > 0 )
+            if (AccountPlanRepo != null && AccountPlanRepo.Count > 0)
             {
                 foreach (AccountPlan plan in AccountPlanRepo)
                 {
@@ -44,7 +44,7 @@ namespace Wpf_GettingReal.App_Layer
                 company.CreateAccountPlan(accountPlan);
             }
 
-
+                this.company = company;
             dataHandler.SaveAccountOrCompanyPlan(null, company);
             } else
             {
@@ -53,21 +53,9 @@ namespace Wpf_GettingReal.App_Layer
 
         }
 
-        public AccountPlan CreateAccountPlan(DateTime startDate, DateTime endDate)
-        {
-            // Implement logic to create a new accounting year
-            // This might involve initializing the properties and saving it to a data source
-            AccountPlan newAccountPlan = new AccountPlan(startDate, endDate);
-
-
-            // Save the new accounting year to the data source
-            dataHandler.SaveAccountOrCompanyPlan(newAccountPlan, null);
-
-            return newAccountPlan;
-        }
-
+        
         public Company? GetCompany()
-        {
+        {   
             return dataHandler.GetCompany();
         }
 
@@ -77,12 +65,7 @@ namespace Wpf_GettingReal.App_Layer
             return company!.GetAccountPlan(yearId);
         }
 
-        public List<AccountPlan> GetAllAccountingYears()
-        {
-              return dataHandler.GetAllAccountingYears();
-        }
-
-     
+       
 
         public void AddPostingToAccount(int yearId, AccountType accountId, AccountType counterAccountId, Posting posting ) {
             AccountPlan? accountingYear = GetAccountingYear(yearId);
@@ -95,12 +78,12 @@ namespace Wpf_GettingReal.App_Layer
                 Account? counterAccount = accountingYear.Accounts.Find((a) => a.AccountId == counterAccountId);
                 if (account == null)
                 {
-                    Console.WriteLine("Konto ikke Fundet!");
+                  
                     return;
                 }
                 if (counterAccount == null)
                 {
-                    Console.WriteLine("Modkonto ikke fundet!");
+                   
                     return;
                 }
 
@@ -109,9 +92,15 @@ namespace Wpf_GettingReal.App_Layer
                 counterAccount.AddPosting(posting);
                 dataHandler.SaveAccountOrCompanyPlan(null, company);
             }
-            
-            
-            
+      
+        }
+
+        public Company UpdateCompanyInfo(string name, int cvr, string address, int telephone, string email)
+        {
+            company.UpdateCompanyInfo(name, cvr, address, telephone, email);
+            dataHandler.SaveAccountOrCompanyPlan(null, company);
+
+            return company;
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Wpf_GettingReal.Domain_Layer
 
         public void AddPosting(Posting posting)
         {
-            Posting existingPosting = Postings.FirstOrDefault(p => p.PostingId == posting.PostingId);
+            Posting? existingPosting = Postings.FirstOrDefault(p => p.PostingId == posting.PostingId);
             if (existingPosting != null)
             {
                 Console.WriteLine("Invallid Id");
