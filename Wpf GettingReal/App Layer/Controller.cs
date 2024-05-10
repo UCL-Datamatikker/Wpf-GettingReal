@@ -74,7 +74,7 @@ namespace Wpf_GettingReal.App_Layer
         public AccountPlan? GetAccountingYear(int yearId)
         {
             // Retrieve the accounting year from the repository based on its ID
-            return dataHandler.GetAccountAccountPlan(yearId);
+            return company!.GetAccountPlan(yearId);
         }
 
         public List<AccountPlan> GetAllAccountingYears()
@@ -107,7 +107,7 @@ namespace Wpf_GettingReal.App_Layer
                 // Posting negativePosting = new Posting(posting.PostingId, posting.Date, posting.Description, -posting.Amount);
                 account.AddPosting(posting);
                 counterAccount.AddPosting(posting);
-                dataHandler.SaveAccountOrCompanyPlan(accountingYear, null);
+                dataHandler.SaveAccountOrCompanyPlan(null, company);
             }
             
             

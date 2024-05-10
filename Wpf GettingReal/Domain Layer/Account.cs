@@ -9,7 +9,7 @@ namespace Wpf_GettingReal.Domain_Layer
         public AccountType AccountId { get; set; }
         public double AccountBalance { get; set; }
 
-        private List<Posting> Postings = new List<Posting>();
+        public List<Posting> Postings = new List<Posting>();
 
         public Account(AccountType accountId, string accountName, double balance)
         {

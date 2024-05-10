@@ -10,23 +10,25 @@
              >
     <Grid>
 
-        <Button x:Name="btnBack" Content="Tilbage" HorizontalAlignment="Left" Margin="559,336,0,0" VerticalAlignment="Top" Click="btnBack_Click" Width="50"/>
-        <Button x:Name="btnNext" Content="OK" HorizontalAlignment="Left" Margin="625,336,0,0" VerticalAlignment="Top" Width="50" Click="btnNext_Click"/>
-        <Label Content="Beløb:" HorizontalAlignment="Left" Margin="126,129,0,0" VerticalAlignment="Top"/>
-        <Label Content="Faktura nr." HorizontalAlignment="Left" Margin="126,172,0,0" VerticalAlignment="Top"/>
-        <Label Content="Dato:" HorizontalAlignment="Left" Margin="126,223,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbAmount" Text="" HorizontalAlignment="Left" Margin="225,133,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbInvoiceNr" HorizontalAlignment="Left" Margin="225,176,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Konto:" HorizontalAlignment="Left" Margin="426,129,0,0" VerticalAlignment="Top"/>
-        <Label Content="Mod Konto:" HorizontalAlignment="Left" Margin="426,180,0,0" VerticalAlignment="Top"/>
-        <Label Content="Betaling Metode:" HorizontalAlignment="Left" Margin="426,229,0,0" VerticalAlignment="Top"/>
-        <Label Content="Betalings Status" HorizontalAlignment="Left" Margin="426,280,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="dpDate" HorizontalAlignment="Left" Margin="225,224,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnBack" Content="Tilbage" HorizontalAlignment="Left" Margin="541,377,0,0" VerticalAlignment="Top" Click="btnBack_Click" Width="50"/>
+        <Button x:Name="btnOK" Content="OK" HorizontalAlignment="Left" Margin="607,377,0,0" VerticalAlignment="Top" Width="50" Click="btnOK_Click"/>
+        <Label Content="Beløb:" HorizontalAlignment="Left" Margin="108,53,0,0" VerticalAlignment="Top"/>
+        <Label Content="Faktura nr." HorizontalAlignment="Left" Margin="108,96,0,0" VerticalAlignment="Top"/>
+        <Label Content="Dato:" HorizontalAlignment="Left" Margin="108,147,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbAmount" Text="" HorizontalAlignment="Left" Margin="207,57,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbInvoiceNr" HorizontalAlignment="Left" Margin="207,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Konto:" HorizontalAlignment="Left" Margin="408,53,0,0" VerticalAlignment="Top"/>
+        <Label Content="Mod Konto:" HorizontalAlignment="Left" Margin="408,104,0,0" VerticalAlignment="Top"/>
+        <Label Content="Betaling Metode:" HorizontalAlignment="Left" Margin="408,153,0,0" VerticalAlignment="Top"/>
+        <Label Content="Betalings Status:" HorizontalAlignment="Left" Margin="408,204,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dpDate" HorizontalAlignment="Left" Margin="207,148,0,0" VerticalAlignment="Top"/>
 
-        <ComboBox x:Name="cbAccount" HorizontalAlignment="Left" Margin="555,131,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" />
-        <ComboBox x:Name="cbPaymentOption" HorizontalAlignment="Left" Margin="555,233,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cbPaymentStatus" HorizontalAlignment="Left" Margin="555,282,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cbCounterAccount" HorizontalAlignment="Left" Margin="555,182,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" />
+        <ComboBox x:Name="cbAccount" HorizontalAlignment="Left" Margin="537,55,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" />
+        <ComboBox x:Name="cbPaymentOption" HorizontalAlignment="Left" Margin="537,157,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbPaymentStatus" HorizontalAlignment="Left" Margin="537,206,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbCounterAccount" HorizontalAlignment="Left" Margin="537,106,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" />
+        <Label Content="Beskrivelse:" HorizontalAlignment="Left" Margin="108,240,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="tbDescription" HorizontalAlignment="Left" Margin="207,245,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="85" Width="133"/>
 
 
 

@@ -12,15 +12,19 @@ namespace Wpf_GettingReal.Domain_Layer
         public DateTime Date { get; set; }
         public string Description { get; set; }
         public double Amount { get; set; }
+        public string PaymentMethod { get; set; }
+        public bool Paid { get; set; }
 
 
 
-        public Posting(int postingId, DateTime date, string description, double amount)
+        public Posting(int postingId, DateTime date, string description, double amount, string paymentMethod, string paid)
         {
             PostingId = postingId;
             Date = date;
             Description = description;
             Amount = amount;
+            PaymentMethod = paymentMethod;
+            Paid = paid == "betalt"? true: false;
 
 
         }

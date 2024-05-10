@@ -1,4 +1,5 @@
 ﻿using GettingReal;
+using System.Security.Principal;
 using System.Windows;
 using System.Windows.Controls;
 using Wpf_GettingReal;
@@ -65,9 +66,12 @@ namespace Getting_Real_WPF.Views
          
         }
 
-        private void btnNext_Click(object sender, RoutedEventArgs e)
+        private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-
+            AccountType accountId = (AccountType)Enum.Parse(typeof(AccountType), cbAccount.Text.Split(", ")[0]);
+            AccountType counterAcount = (AccountType)Enum.Parse(typeof(AccountType), cbCounterAccount.Text.Split(", ")[1]);
+            Posting posting = new Posting(int.Parse(tbInvoiceNr.Text), DateTime.Parse(dpDate.Text), tbDescription.Text, double.Parse(tbAmount.Text), cbPaymentOption.Text, cbPaymentStatus.Text.ToLower());
+            controller.AddPostingToAccount(DateTime.Parse(dpDate.Text).Year, accountId, counterAcount, posting);
         }
     }
 }

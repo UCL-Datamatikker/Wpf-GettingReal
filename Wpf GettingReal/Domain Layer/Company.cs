@@ -8,7 +8,7 @@
         public string Address { get; set; }
         public int Telephone { get; set; }
         public string Email { get; set; }
-        public List<AccountPlan> AccountPlans { get; set; }
+        public List<AccountPlan>? AccountPlans { get; set; }
 
         
 
@@ -51,11 +51,25 @@
             AccountPlans.Add(accountPlan);
         }
 
-        //public AccountPlan GetAccountPlan(int yearId)
-        //{
-        //    // Implement logic to retrieve an accounting year by its ID
-        //    return new AccountPlan();
-        //}
+        public AccountPlan? GetAccountPlan(int yearId)
+        {
+            if (AccountPlans == null || AccountPlans.Count == 0)
+            {
+                Console.WriteLine("Repo is empty");
+                return null;
+
+            }
+            else if (AccountPlans.Find(ap => ap.YearId == yearId) == null)
+            {
+                Console.WriteLine("Not Found!");
+                return null;
+            }
+            else
+            {
+                AccountPlan? accountPlan = AccountPlans.Find(ap => ap.YearId == yearId);
+                return accountPlan;
+            }
+        }
 
         public List<AccountPlan> GetAllAccountPlans()
         {
