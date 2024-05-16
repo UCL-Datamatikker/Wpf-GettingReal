@@ -81,10 +81,13 @@ namespace Wpf_GettingReal.App_Layer
         {
               return dataHandler.GetAllAccountingYears();
         }
+        
+        
         public bool ValidateLogin(string email, string password)
         {
+            //Recieve company info from datahandler
             Company? company = dataHandler.GetCompany();
-            if (company != null && company.Email == email)
+            if (company != null && company.Email == email && company.Password == password)
             {
                 return true;
             }

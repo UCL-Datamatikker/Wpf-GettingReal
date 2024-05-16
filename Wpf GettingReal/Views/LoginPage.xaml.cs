@@ -35,17 +35,25 @@ namespace Wpf_GettingReal.Views
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            //Retrieves email and pass from user
             string email = tbLoginEmail.Text;
             string password = tbLoginPassword.Text;
 
+            //Validates login, from ValidateLogin method in controller
             bool loginSuccess = controller.ValidateLogin(email, password);
 
+            //Checks if login is successful, if it is then it revrieves company data.
             if (loginSuccess)
             {
                 Company company = controller.GetCompany();
+
                 if (company != null)
                 {
+                    //If company exists - Navigates to startpage 
                     mainWindow.Main.NavigationService.Navigate(new StartPage(company));
+
+                    //enable buttons after successful login
+                    mainWindow.EnableButtons();
                 }
                 
             }
