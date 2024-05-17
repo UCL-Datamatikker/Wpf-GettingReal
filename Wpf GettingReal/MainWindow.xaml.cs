@@ -1,4 +1,5 @@
-﻿using Getting_Real_WPF.Views;
+﻿using Getting_Real_WPF.ViewModels;
+using Getting_Real_WPF.Views;
 using System.Windows;
 using Wpf_GettingReal.App_Layer;
 using Wpf_GettingReal.Domain_Layer;
@@ -18,6 +19,8 @@ namespace Wpf_GettingReal
         {
             InitializeComponent();
             controller = new Controller();
+            MainViewModel mvm = new MainViewModel(controller);
+            DataContext = mvm;
 
 
             LoginPage loginPage = new LoginPage(this, controller);
@@ -40,6 +43,7 @@ namespace Wpf_GettingReal
             btnCompany.IsEnabled = true;
             btnIncome.IsEnabled = true;
             btnExpense.IsEnabled = true;
+            btnAccountOverview.IsEnabled = true;
         }
 
         private void btnCompany_Click(object sender, RoutedEventArgs e)
@@ -61,6 +65,11 @@ namespace Wpf_GettingReal
         private void btnExpense_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new AddExpensePage();
+        }
+
+        private void btnOverview_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new AccountOverviewPage();
         }
 
         //private void btnMakeCompany_Click(object sender, RoutedEventArgs e)

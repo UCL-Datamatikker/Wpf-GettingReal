@@ -46,7 +46,9 @@ namespace Wpf_GettingReal.Views
 
         public StartPage(Controller controller)
         {
+            InitializeComponent();
             this.controller = controller;
+            
         }
 
         private void SetCompanyData()

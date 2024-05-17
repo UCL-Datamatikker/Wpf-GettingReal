@@ -1,51 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wpf_GettingReal.App_Layer;
+using Wpf_GettingReal.Domain_Layer;
 
 namespace Getting_Real_WPF.ViewModels
 {
-    //public class MainViewModel : INotifyPropertyChanged
-    //{
-    //    private string _myLabelText = "Text not set yet";
-    //    public string MyLabelText
-    //    {
-    //        get { return _myLabelText; }
-    //        set
-    //        {
-    //            if (_myLabelText != value)
-    //            {
-    //                _myLabelText = value;
-    //                OnPropertyChanged(nameof(MyLabelText));
-    //            }
-    //        }
-    //    }
-
-    //    private string _myTextBoxText = "Text not set yet";
-    //    public string MyTextBoxText
-    //    {
-    //        get { return _myTextBoxText; }
-    //        set
-    //        {
-    //            if (_myTextBoxText != value)
-    //            {
-    //                _myTextBoxText = value;
-    //                OnPropertyChanged(nameof(MyTextBoxText));
-    //            }
-    //        }
-    //    }
+    public class MainViewModel : INotifyPropertyChanged
+    {
 
 
+        ObservableCollection<AccountPlan> accountPlansCollection;
+        Controller controller;
+
+        public MainViewModel(Controller controller) {
+            this.controller = controller;
+            accountPlansCollection = new ObservableCollection<AccountPlan>();
+
+            List<AccountPlan> accountPlans = controller.GetAllAccountPlans();
+
+            foreach(AccountPlan AP in accountPlans)
+            {
+                accountPlansCollection.Add(AP);
+            }
+        }
 
 
+        public event PropertyChangedEventHandler PropertyChanged;
 
-    //    public event PropertyChangedEventHandler PropertyChanged;
-
-    //    protected void OnPropertyChanged(string propertyName)
-    //    {
-    //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    //    }
-    //}
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
 }

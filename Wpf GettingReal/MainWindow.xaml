@@ -11,7 +11,9 @@
             <Button Name="btnCompany" Content="Company" Margin="5,5,5,5" Click="btnCompany_Click" IsEnabled="False"/>
             <Button Name="btnIncome" Content="Income" Margin="5,5,5,5" Click="btnIncome_Click" IsEnabled="False"/>
             <Button Name="btnExpense" Content="Expense" Margin="5,5,5,5" Click="btnExpense_Click" IsEnabled="False"/>
+            <Button Name="btnAccountOverview" Content="Overview" Margin="5,5,5,5" Click="btnOverview_Click" IsEnabled="False"/>
         </StackPanel>
         <Frame Name="Main" Margin="0,30,0,27" NavigationUIVisibility="Hidden"/>
+        
     </Grid>
 </Window>

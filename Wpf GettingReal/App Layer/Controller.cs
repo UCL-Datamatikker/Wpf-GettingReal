@@ -66,6 +66,12 @@ namespace Wpf_GettingReal.App_Layer
         }
 
 
+        public List<AccountPlan> GetAllAccountPlans()
+        {
+            return company!.GetAllAccountPlans();
+        } 
+
+
         
         
         public bool ValidateLogin(string email, string password)
