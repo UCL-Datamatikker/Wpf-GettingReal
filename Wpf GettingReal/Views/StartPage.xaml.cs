@@ -40,7 +40,7 @@ namespace Wpf_GettingReal.Views
             this.Controller = controller;
             
 
-            SetCompanyData(company);
+            SetCompanyData();
             
         }
 
@@ -50,13 +50,12 @@ namespace Wpf_GettingReal.Views
         }
 
         private void SetCompanyData()
-
         {
-            CompanyName = company.Name;
-            CVR = company.CVR;
-            Email = company.Email;
-            PhoneNumber = company.Telephone;
-            Address = company.Address;
+            CompanyName = Company.Name;
+            CVR = Company.CVR;
+            Email = Company.Email;
+            PhoneNumber = Company.Telephone;
+            Address = Company.Address;
 
             lblName.Content = CompanyName;
             lblCVR.Content = CVR;
@@ -77,7 +76,7 @@ namespace Wpf_GettingReal.Views
             {
                 string[] Data = editCompanyWindow.Data;
                 Company = Controller.UpdateCompanyInfo(Data[0], int.Parse(Data[1]), Data[2], int.Parse(Data[3]), Data[4]);
-                SetCompanyData(Company);
+                SetCompanyData();
             }
         }
     }

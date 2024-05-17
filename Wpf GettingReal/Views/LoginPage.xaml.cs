@@ -50,7 +50,7 @@ namespace Wpf_GettingReal.Views
                 if (company != null)
                 {
                     //If company exists - Navigates to startpage 
-                    mainWindow.Main.NavigationService.Navigate(new StartPage(company));
+                    mainWindow.Main.NavigationService.Navigate(new StartPage(company, controller));
 
                     //enable buttons after successful login
                     mainWindow.EnableButtons();
