@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Wpf_GettingReal.App_Layer;
 using Wpf_GettingReal.Domain_Layer;
 
@@ -14,18 +9,72 @@ namespace Getting_Real_WPF.ViewModels
     {
 
 
-        ObservableCollection<AccountPlan> accountPlansCollection;
-        Controller controller;
+        private ObservableCollection<AccountPlan> _accountPlansCollection;
+        public ObservableCollection<AccountPlan> AccountPlansCollection
+        {
+            get
+            {
+                return _accountPlansCollection;
+            }
+            set
+            {
+                _accountPlansCollection = value;
+                OnPropertyChanged(nameof(AccountPlansCollection));
+            }
+        }
 
-        public MainViewModel(Controller controller) {
-            this.controller = controller;
-            accountPlansCollection = new ObservableCollection<AccountPlan>();
+        private AccountPlan _selectedAccountPlan;
+        public AccountPlan SelectedAccountPlan
+        {
+            get { return _selectedAccountPlan; }
+            set
+            {
+                _selectedAccountPlan = value;
+                OnPropertyChanged(nameof(SelectedAccountPlan));
+                foreach (var account in _selectedAccountPlan.Accounts)
+                {
+                    AccountCollection.Add(account);
+                }
+            }
+        }
 
+        private ObservableCollection<Account> _accountCollection;
+        public ObservableCollection<Account> AccountCollection
+        {
+            get
+            {
+                return _accountCollection;
+            }
+            set
+            {
+                _accountCollection = value;
+                OnPropertyChanged(nameof(AccountCollection));
+            }
+        }
+
+        private Account _selectedAccount;
+        public Account SelectedAccount
+        {
+            get { return _selectedAccount; }
+            set
+            {
+                _selectedAccount = value;
+                OnPropertyChanged(nameof(SelectedAccount));
+                
+            }
+        }
+
+        public Controller controller;
+
+        public MainViewModel() {
+            this.controller = new Controller();
+            AccountPlansCollection = new ObservableCollection<AccountPlan>();
+            AccountCollection = new ObservableCollection<Account>();
             List<AccountPlan> accountPlans = controller.GetAllAccountPlans();
 
             foreach(AccountPlan AP in accountPlans)
             {
-                accountPlansCollection.Add(AP);
+                AccountPlansCollection.Add(AP);
             }
         }
 

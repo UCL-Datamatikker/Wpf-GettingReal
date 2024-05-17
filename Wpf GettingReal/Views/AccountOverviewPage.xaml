@@ -4,13 +4,15 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Wpf_GettingReal.Views"
+      
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="800" Background="White"
       Title="Overview">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250" MinWidth="200"/>
+            <ColumnDefinition Width="100" MinWidth="100"/>
+            <ColumnDefinition Width="100" MinWidth="100" />
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -19,13 +21,34 @@
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <ListBox Name="lbFullName" Grid.Row="0" ItemsSource="{Binding accountPlansCollection}" >
+            <ListBox Name="lbAccountPlan" Grid.Row="0" ItemsSource="{Binding AccountPlansCollection}" SelectedItem="{Binding SelectedAccountPlan}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock>
                              <Run Text="{Binding YearId}" />
-                            
+
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <!--<Button Name="btnNewPerson" Margin="0,0,125,0" Grid.Row="1" Command="{Binding NewPersonCommand}" CommandParameter="{Binding}">New</Button>-->
+            <!--<Button Name="btnDeletePerson" Margin="125,0,0,0" Grid.Row="1" Command="{Binding DeletePersonCommand}" CommandParameter="{Binding}">Delete</Button>-->
+            <StackPanel Orientation="Horizontal" Grid.Row="1"/>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ListBox Name="lbAccount" Grid.Row="0" ItemsSource="{Binding AccountCollection}" SelectedItem="{Binding SelectedAccount}" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock>
+                                <Run Text="{Binding AccountName}" />
+
                             </TextBlock>
                         </StackPanel>
                     </DataTemplate>
@@ -36,16 +59,17 @@
             <StackPanel Orientation="Horizontal" Grid.Row="1"/>
         </Grid>
 
-        <GridSplitter Width="5" Grid.Column="1" HorizontalAlignment="Stretch"/>
-        <Grid Grid.Column="2">
-            <TextBox Text="{Binding SelectedPerson.FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" VerticalAlignment="Top" Margin="170,62,171,0"/>
-            <TextBox Text="{Binding SelectedPerson.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" Margin="170,109,171,0" VerticalAlignment="Top" />
-            <TextBox Text="{Binding SelectedPerson.Age, Mode=TwoWay}" Height="20" Margin="170,158,171,0" VerticalAlignment="Top"/>
-            <TextBox Text="{Binding SelectedPerson.Phone, Mode=TwoWay}" Height="20" Margin="170,204,171,0" VerticalAlignment="Top"/>
-            <Label Content="FirstName:" HorizontalAlignment="Left" Margin="67,59,0,0" VerticalAlignment="Top"/>
-            <Label Content="LastName:" HorizontalAlignment="Left" Margin="67,103,0,0" VerticalAlignment="Top" Width="66"/>
-            <Label Content="Age:" HorizontalAlignment="Left" Margin="67,152,0,0" VerticalAlignment="Top"/>
-            <Label Content="Phone:" HorizontalAlignment="Left" Margin="67,204,0,0" VerticalAlignment="Top"/>
+        <GridSplitter Width="5" Grid.Column="2" HorizontalAlignment="Stretch"/>
+        <Grid Grid.Column="3">
+            <TextBox Text="{Binding SelectedAccount.AccountName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" VerticalAlignment="Top" Margin="170,62,171,0"/>
+            <TextBox Text="{Binding SelectedAccount.AccountId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" Margin="170,109,171,0" VerticalAlignment="Top" />
+            <TextBox Text="{Binding SelectedAccount.AccountBalance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" Margin="170,158,171,0" VerticalAlignment="Top"/>
+            
+            <Label Content="År:" HorizontalAlignment="Left" Margin="67,59,0,0" VerticalAlignment="Top"/>
+            <Label Content="Start Dato:" HorizontalAlignment="Left" Margin="67,103,0,0" VerticalAlignment="Top" Width="66"/>
+            <Label Content="Slut Dato:" HorizontalAlignment="Left" Margin="67,152,0,0" VerticalAlignment="Top"/>
+            <Label Content="Lukket:" HorizontalAlignment="Left" Margin="67,204,0,0" VerticalAlignment="Top"/>
+            <Label Content="Konti:" HorizontalAlignment="Left" Margin="67,248,0,0" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </Page>

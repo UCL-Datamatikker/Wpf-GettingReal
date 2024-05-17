@@ -19,7 +19,7 @@ namespace Wpf_GettingReal
         {
             InitializeComponent();
             controller = new Controller();
-            MainViewModel mvm = new MainViewModel(controller);
+            MainViewModel mvm = new MainViewModel();
             DataContext = mvm;
 
 

@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using Getting_Real_WPF.ViewModels;
+using System.Windows.Controls;
 
 namespace Wpf_GettingReal.Views
 {
@@ -10,6 +11,9 @@ namespace Wpf_GettingReal.Views
         public AccountOverviewPage()
         {
             InitializeComponent();
+            MainViewModel mvm = new MainViewModel();
+            DataContext = mvm;
+
         }
     }
 }
