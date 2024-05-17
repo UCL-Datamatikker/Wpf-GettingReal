@@ -7,27 +7,71 @@ namespace Wpf_GettingReal.App_Layer
     {
         private List<AccountPlan> AccountPlanRepo;
         private DataHandler dataHandler;
+        Company? company;
+        
 
         public Controller()
         {
-            AccountPlanRepo = new List<AccountPlan>();
-            dataHandler = new DataHandler("AccountPlans.txt");
+           
+            dataHandler = new DataHandler("AccountPlans.txt", "Company.txt");
+            AccountPlanRepo = dataHandler.GetAllAccountingYears();
+            company = dataHandler.GetCompany();
+        }
+
+        public void CreateCompany(string name, int cvr, string address, int telephone, string email, string password)
+        {
+            if (company == null)
+            {
+
+            
+            Company company = new Company(name, cvr, address, telephone, email, password);
+
+            if (AccountPlanRepo.Count > 0 )
+            {
+                foreach (AccountPlan plan in AccountPlanRepo)
+                {
+                    company.CreateAccountPlan(plan);
+                }
+            } else
+            {
+                int currentYear = DateTime.Now.Year;
+                DateTime lastDayOfYear = new DateTime(currentYear + 1, 1, 1);
+                lastDayOfYear = lastDayOfYear.AddDays(-1);
+                DateTime firstDayOfYear = new DateTime(currentYear, 1, 1);
+
+
+                AccountPlan accountPlan = new AccountPlan(firstDayOfYear, lastDayOfYear);
+                company.CreateAccountPlan(accountPlan);
+            }
+
+
+            dataHandler.SaveAccountOrCompanyPlan(null, company);
+            } else
+            {
+                return;
+            }
+
         }
 
         public AccountPlan CreateAccountPlan(DateTime startDate, DateTime endDate)
         {
             // Implement logic to create a new accounting year
             // This might involve initializing the properties and saving it to a data source
-            AccountPlan newAccountingYear = new AccountPlan(startDate, endDate);
+            AccountPlan newAccountPlan = new AccountPlan(startDate, endDate);
 
 
             // Save the new accounting year to the data source
-            dataHandler.SaveAccountPlan(newAccountingYear);
+            dataHandler.SaveAccountOrCompanyPlan(newAccountPlan, null);
 
-            return newAccountingYear;
+            return newAccountPlan;
         }
 
-        public AccountPlan GetAccountingYear(int yearId)
+        public Company? GetCompany()
+        {
+            return dataHandler.GetCompany();
+        }
+
+        public AccountPlan? GetAccountingYear(int yearId)
         {
             // Retrieve the accounting year from the repository based on its ID
             return dataHandler.GetAccountAccountPlan(yearId);
@@ -35,37 +79,49 @@ namespace Wpf_GettingReal.App_Layer
 
         public List<AccountPlan> GetAllAccountingYears()
         {
-            // Retrieve all accounting years from the repository
-            return dataHandler.GetAllAccountingYears();
+              return dataHandler.GetAllAccountingYears();
         }
-
-        public void GenerateAnnualReport(AccountPlan year)
+        
+        
+        public bool ValidateLogin(string email, string password)
         {
-            // Implement logic to generate an annual report for the specified accounting year
-            // This might involve calculations and formatting of financial data
-            // The generated report could be saved to a file or sent via email, for example
-            Console.WriteLine($"Generating annual report for accounting year {year.YearId}...");
-            
+            //Recieve company info from datahandler
+            Company? company = dataHandler.GetCompany();
+            if (company != null && company.Email == email && company.Password == password)
+            {
+                return true;
+            }
+            return false;
         }
 
         public void AddPostingToAccount(int yearId, AccountType accountId, AccountType counterAccountId, Posting posting ) {
-            AccountPlan accountingYear = GetAccountingYear(yearId);
-            Account account = accountingYear.Accounts.Find((a) => a.AccountId == accountId);
-            Account counterAccount = accountingYear.Accounts.Find((a) => a.AccountId == counterAccountId);
-            if (account == null || counterAccount == null)
+            AccountPlan? accountingYear = GetAccountingYear(yearId);
+            if ( accountingYear == null )
             {
-                Console.WriteLine("Konto ikke Fundet!");
-                return;
-            }
-            if (counterAccount == null)
+                return ;
+            } else
             {
-                Console.WriteLine("Modkonto ikke fundet!");
-                return;
+                Account? account = accountingYear.Accounts.Find((a) => a.AccountId == accountId);
+                Account? counterAccount = accountingYear.Accounts.Find((a) => a.AccountId == counterAccountId);
+                if (account == null)
+                {
+                    Console.WriteLine("Konto ikke Fundet!");
+                    return;
+                }
+                if (counterAccount == null)
+                {
+                    Console.WriteLine("Modkonto ikke fundet!");
+                    return;
+                }
+
+                // Posting negativePosting = new Posting(posting.PostingId, posting.Date, posting.Description, -posting.Amount);
+                account.AddPosting(posting);
+                counterAccount.AddPosting(posting);
+                dataHandler.SaveAccountOrCompanyPlan(accountingYear, null);
             }
-            // Posting negativePosting = new Posting(posting.PostingId, posting.Date, posting.Description, -posting.Amount);
-            account.AddPosting(posting);
-            counterAccount.AddPosting(posting);
-            dataHandler.SaveAccountPlan(accountingYear);
+            
+            
+            
         }
     }
 }

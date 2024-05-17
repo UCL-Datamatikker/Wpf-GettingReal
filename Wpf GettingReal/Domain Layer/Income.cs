@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 
-namespace GettingReal
+namespace Wpf_GettingReal.Domain_Layer
 {
     public class Income
     {
