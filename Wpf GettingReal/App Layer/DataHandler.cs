@@ -7,7 +7,7 @@ namespace Wpf_GettingReal.App_Layer
     public class DataHandler
     {
 
-        private List<AccountPlan>? AccountPlans = new List<AccountPlan>(); // Simulated data storage
+        private List<AccountPlan> AccountPlans = new List<AccountPlan>(); 
         private Company? company;
 
         private string accountFilePath; // File path for storing JSON data
@@ -33,18 +33,17 @@ namespace Wpf_GettingReal.App_Layer
             // Retrieve the accounting year from the data storage based on its ID
             if (AccountPlans.Count == 0)
             {
-                Console.WriteLine("Repo is empty");
-                AccountPlans = null;
+              
                 return null;
                
             }
             else if (AccountPlans.Find(ap => ap.YearId == yearId) == null)
             {
-                Console.WriteLine("Not Found!");
+                
                 return null;
             } else
             {
-                AccountPlan accountPlan = AccountPlans.Find(ap => ap.YearId == yearId);
+                AccountPlan? accountPlan = AccountPlans.Find(ap => ap.YearId == yearId);
                 return accountPlan;
             }
             

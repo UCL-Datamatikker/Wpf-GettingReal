@@ -13,10 +13,12 @@ namespace Wpf_GettingReal
     {
         
         Controller controller;
+        Company? company;
         public MainWindow()
         {
             InitializeComponent();
             controller = new Controller();
+
 
             LoginPage loginPage = new LoginPage(this, controller);
             NoCompanyPage noCompanyPage = new NoCompanyPage(controller, this);
@@ -27,6 +29,7 @@ namespace Wpf_GettingReal
                 Main.NavigationService.Navigate(loginPage);
             } 
             else
+
             {
                 Main.NavigationService.Navigate(noCompanyPage);
             }
@@ -41,11 +44,13 @@ namespace Wpf_GettingReal
 
         private void btnCompany_Click(object sender, RoutedEventArgs e)
         {
+
             Company company = controller.GetCompany();
             if(company != null)
             {
-                Main.Content = new StartPage(company);
+                Main.Content = new StartPage(company, controller);
             }
+
         }
 
         private void btnIncome_Click(object sender, RoutedEventArgs e)

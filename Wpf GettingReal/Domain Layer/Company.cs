@@ -22,47 +22,45 @@
             Email = email;
             Password = password;
             AccountPlans = new List<AccountPlan>();
-
-
-            //int currentYear = DateTime.Now.Year;
-            //DateTime lastDayOfYear = new DateTime(currentYear + 1, 1, 1);
-            //lastDayOfYear = lastDayOfYear.AddDays(-1);
-            //DateTime firstDayOfYear = new DateTime(currentYear, 1, 1);
-
-            //List<AccountPlan> accountPlan = controller.GetAllAccountingYears();
-
-            //if (accountPlan != null )
-            //{
-            //    foreach (AccountPlan account in accountPlan)
-            //    {
-            //        AccountPlans.Add(account);
-            //    }
-
-            //} else
-            //{
-            //    CreateAccountPlan(firstDayOfYear, lastDayOfYear);
-            //}
-
-
         }
 
         public void CreateAccountPlan(AccountPlan accountPlan)
-        {
-            // Implement logic to create a new accounting year
-            
+        {    
             AccountPlans.Add(accountPlan);
         }
 
-        //public AccountPlan GetAccountPlan(int yearId)
-        //{
-        //    // Implement logic to retrieve an accounting year by its ID
-        //    return new AccountPlan();
-        //}
+        public AccountPlan? GetAccountPlan(int yearId)
+        {
+            if (AccountPlans == null || AccountPlans.Count == 0)
+            {
+             
+                return null;
+
+            }
+            else if (AccountPlans.Find(ap => ap.YearId == yearId) == null)
+            {
+               
+                return null;
+            }
+            else
+            {
+                AccountPlan? accountPlan = AccountPlans.Find(ap => ap.YearId == yearId);
+                return accountPlan;
+            }
+        }
 
         public List<AccountPlan> GetAllAccountPlans()
         {
-            // Implement logic to retrieve all accounting years for this company
             return AccountPlans;
+        }
+
+        public void UpdateCompanyInfo(string name, int cvr, string address, int telephone, string email)
+        {
+            Name = name;
+            CVR = cvr;
+            Address = address;
+            Telephone = telephone;
+            Email = email;
         }
 
 

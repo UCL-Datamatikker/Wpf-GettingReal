@@ -31,7 +31,7 @@ namespace Wpf_GettingReal.Views
                 controller.CreateCompany(companyData[0], int.Parse(companyData[1]), companyData[2], int.Parse(companyData[3]), companyData[4], companyData[5]);
                 Company? company = controller.GetCompany();
 
-                MainWindow.Main.Content = new StartPage(company!);
+                MainWindow.Main.Content = new StartPage(company!, controller);
                 MainWindow.EnableButtons();
             }
 

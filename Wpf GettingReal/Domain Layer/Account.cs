@@ -9,7 +9,7 @@ namespace Wpf_GettingReal.Domain_Layer
         public AccountType AccountId { get; set; }
         public double AccountBalance { get; set; }
 
-        private List<Posting> Postings = new List<Posting>();
+        public List<Posting> Postings = new List<Posting>();
 
         public Account(AccountType accountId, string accountName, double balance)
         {
@@ -26,7 +26,7 @@ namespace Wpf_GettingReal.Domain_Layer
 
         public void AddPosting(Posting posting)
         {
-            Posting existingPosting = Postings.FirstOrDefault(p => p.PostingId == posting.PostingId);
+            Posting? existingPosting = Postings.FirstOrDefault(p => p.PostingId == posting.PostingId);
             if (existingPosting != null)
             {
                 Console.WriteLine("Invallid Id");
