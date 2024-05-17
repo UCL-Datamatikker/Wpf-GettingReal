@@ -37,7 +37,7 @@ namespace Wpf_GettingReal.Views
         {
             //Retrieves email and pass from user
             string email = tbLoginEmail.Text;
-            string password = tbLoginPassword.Text;
+            string password = pbLoginPassword.Password;
 
             //Validates login, from ValidateLogin method in controller
             bool loginSuccess = controller.ValidateLogin(email, password);
