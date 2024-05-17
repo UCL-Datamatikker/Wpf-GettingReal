@@ -18,13 +18,13 @@ namespace Wpf_GettingReal.App_Layer
             AccountPlanRepo = company?.GetAllAccountPlans();
         }
 
-        public void CreateCompany(string name, int cvr, string address, int telephone, string email)
+        public void CreateCompany(string name, int cvr, string address, int telephone, string email, string password)
         {
             if (company == null)
             {
 
             
-            Company company = new Company(name, cvr, address, telephone, email);
+            Company company = new Company(name, cvr, address, telephone, email, password);
 
             if (AccountPlanRepo != null && AccountPlanRepo.Count > 0)
             {
@@ -65,7 +65,20 @@ namespace Wpf_GettingReal.App_Layer
             return company!.GetAccountPlan(yearId);
         }
 
-       
+
+        
+        
+        public bool ValidateLogin(string email, string password)
+        {
+            //Recieve company info from datahandler
+            Company? company = dataHandler.GetCompany();
+            if (company != null && company.Email == email && company.Password == password)
+            {
+                return true;
+            }
+            return false;
+        }
+
 
         public void AddPostingToAccount(int yearId, AccountType accountId, AccountType counterAccountId, Posting posting ) {
             AccountPlan? accountingYear = GetAccountingYear(yearId);

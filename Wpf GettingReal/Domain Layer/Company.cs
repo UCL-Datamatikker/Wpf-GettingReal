@@ -8,17 +8,19 @@
         public string Address { get; set; }
         public int Telephone { get; set; }
         public string Email { get; set; }
+        public string Password { get; set; }
         public List<AccountPlan> AccountPlans { get; set; }
 
         
 
-        public Company(string name, int cvr, string address, int telephone, string email)
+        public Company(string name, int cvr, string address, int telephone, string email, string password)
         {
             Name = name;
             CVR = cvr;
             Address = address;
             Telephone = telephone;
             Email = email;
+            Password = password;
             AccountPlans = new List<AccountPlan>();
         }
 
