@@ -68,8 +68,8 @@ namespace Getting_Real_WPF.Views
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            AccountType accountId = (AccountType)Enum.Parse(typeof(AccountType), cbAccount.Text.Split(", ")[0]);
-            AccountType counterAcount = (AccountType)Enum.Parse(typeof(AccountType), cbCounterAccount.Text.Split(", ")[1]);
+            int accountId = (int)(AccountType)Enum.Parse(typeof(AccountType), cbAccount.Text.Split(", ")[0]);
+            int counterAcount = (int)(AccountType)Enum.Parse(typeof(AccountType), cbCounterAccount.Text.Split(", ")[1]);
             Posting posting = new Posting(int.Parse(tbInvoiceNr.Text), DateTime.Parse(dpDate.Text), tbDescription.Text, double.Parse(tbAmount.Text), cbPaymentOption.Text, cbPaymentStatus.Text.ToLower());
             controller.AddPostingToAccount(DateTime.Parse(dpDate.Text).Year, accountId, counterAcount, posting);
         }

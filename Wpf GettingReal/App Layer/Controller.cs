@@ -86,7 +86,7 @@ namespace Wpf_GettingReal.App_Layer
         }
 
 
-        public void AddPostingToAccount(int yearId, AccountType accountId, AccountType counterAccountId, Posting posting ) {
+        public void AddPostingToAccount(int yearId, int accountId, int counterAccountId, Posting posting ) {
             AccountPlan? accountingYear = GetAccountingYear(yearId);
             if ( accountingYear == null )
             {

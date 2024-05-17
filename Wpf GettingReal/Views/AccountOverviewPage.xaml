@@ -6,22 +6,25 @@
       xmlns:local="clr-namespace:Wpf_GettingReal.Views"
       
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800" Background="White"
+      d:DesignHeight="900" d:DesignWidth="1440" Background="White"
       Title="Overview">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100" MinWidth="100"/>
-            <ColumnDefinition Width="100" MinWidth="100" />
+            <ColumnDefinition Width="100" MinWidth="50"/>
+            <ColumnDefinition Width="200" MinWidth="100" />
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
-            <ListBox Name="lbAccountPlan" Grid.Row="0" ItemsSource="{Binding AccountPlansCollection}" SelectedItem="{Binding SelectedAccountPlan}" >
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold">År</Label>
+            <ListBox Name="lbAccountPlan" Grid.Row="1" ItemsSource="{Binding AccountPlansCollection}" SelectedItem="{Binding SelectedAccountPlan}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -39,10 +42,11 @@
         </Grid>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
-            <ListBox Name="lbAccount" Grid.Row="0" ItemsSource="{Binding AccountCollection}" SelectedItem="{Binding SelectedAccount}" >
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold">Konti</Label>
+            <ListBox Name="lbAccount" Grid.Row="1" ItemsSource="{Binding AccountCollection}" SelectedItem="{Binding SelectedAccount}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -60,16 +64,51 @@
         </Grid>
 
         <GridSplitter Width="5" Grid.Column="2" HorizontalAlignment="Stretch"/>
+        
         <Grid Grid.Column="3">
-            <TextBox Text="{Binding SelectedAccount.AccountName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" VerticalAlignment="Top" Margin="170,62,171,0"/>
-            <TextBox Text="{Binding SelectedAccount.AccountId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" Margin="170,109,171,0" VerticalAlignment="Top" />
-            <TextBox Text="{Binding SelectedAccount.AccountBalance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" Margin="170,158,171,0" VerticalAlignment="Top"/>
-            
-            <Label Content="År:" HorizontalAlignment="Left" Margin="67,59,0,0" VerticalAlignment="Top"/>
-            <Label Content="Start Dato:" HorizontalAlignment="Left" Margin="67,103,0,0" VerticalAlignment="Top" Width="66"/>
-            <Label Content="Slut Dato:" HorizontalAlignment="Left" Margin="67,152,0,0" VerticalAlignment="Top"/>
-            <Label Content="Lukket:" HorizontalAlignment="Left" Margin="67,204,0,0" VerticalAlignment="Top"/>
-            <Label Content="Konti:" HorizontalAlignment="Left" Margin="67,248,0,0" VerticalAlignment="Top"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold">Konto Oversigt</Label>
+            <GridSplitter Width="5" Grid.Row="1" VerticalAlignment="Stretch"/>
+            <Grid Grid.Row="2">
+                <TextBox Text="{Binding SelectedAccount.AccountName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="20" VerticalAlignment="Top" Margin="110,50,30,0"/>
+                <TextBox Text="{Binding SelectedAccount.AccountId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="20" Margin="110,100,30,0" VerticalAlignment="Top" />
+                <TextBox Text="{Binding SelectedAccount.AccountBalance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="20" Margin="110,150,30,0" VerticalAlignment="Top"/>
+                <ComboBox ItemsSource="{Binding PostingCollection}" DisplayMemberPath="Description"  SelectedItem="{Binding SelectedPosting}" IsReadOnly="True" Height="20" Margin="110,200,30,0" VerticalAlignment="Top"/>
+
+                <Label Content="Konto Navn:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
+                <Label Content="Konto Nr.:" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="66"/>
+                <Label Content="Konto Balance:" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top"/>
+
+                <Label Content="Posteringer:" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"/>
+            </Grid>
+           
+        </Grid>
+        <GridSplitter Width="5" Grid.Column="4" HorizontalAlignment="Stretch"/>
+        <Grid Grid.Column="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold">Postering</Label>
+            <Grid Grid.Row="1">
+                <TextBox Text="{Binding SelectedPosting.PostingId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="20" VerticalAlignment="Top" Margin="110,50,30,0"/>
+                <TextBox Text="{Binding SelectedPosting.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="20" VerticalAlignment="Top" Margin="110,100,30,0"/>
+                <TextBox Text="{Binding SelectedPosting.Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="20" Margin="110,150,30,0" VerticalAlignment="Top" />
+                <TextBox Text="{Binding SelectedPosting.Paid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="20" Margin="110,200,30,0" VerticalAlignment="Top"/>
+                <TextBox Text="{Binding SelectedPosting.PaymentMethod, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="20" Margin="110,250,30,0" VerticalAlignment="Top"/>
+                <TextBox Text="{Binding SelectedPosting.Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="20" Margin="110,300,30,0" VerticalAlignment="Top"/>
+                <Label Content="Faktura Nr.:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top"/>
+                <Label Content="Beskrivelse:" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
+                <Label Content="Beløb:" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Width="66"/>
+                <Label Content="Betaling Status:" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"/>
+                <Label Content="Betaling Metode:" HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top"/>
+                <Label Content="Dato:" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top"/>
+
+            </Grid>
         </Grid>
     </Grid>
 </Page>

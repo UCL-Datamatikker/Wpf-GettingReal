@@ -42,7 +42,7 @@ namespace Wpf_GettingReal
         {
             btnCompany.IsEnabled = true;
             btnIncome.IsEnabled = true;
-            btnExpense.IsEnabled = true;
+            
             btnAccountOverview.IsEnabled = true;
         }
 
@@ -62,10 +62,7 @@ namespace Wpf_GettingReal
             Main.Content = new AddIncomePage(controller);
         }
 
-        private void btnExpense_Click(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new AddExpensePage();
-        }
+       
 
         private void btnOverview_Click(object sender, RoutedEventArgs e)
         {

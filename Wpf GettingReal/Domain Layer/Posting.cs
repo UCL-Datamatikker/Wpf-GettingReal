@@ -13,7 +13,7 @@ namespace Wpf_GettingReal.Domain_Layer
         public string Description { get; set; }
         public double Amount { get; set; }
         public string PaymentMethod { get; set; }
-        public bool Paid { get; set; }
+        public string Paid { get; set; }
 
 
 
@@ -24,7 +24,7 @@ namespace Wpf_GettingReal.Domain_Layer
             Description = description;
             Amount = amount;
             PaymentMethod = paymentMethod;
-            Paid = paid == "betalt"? true: false;
+            Paid = paid;
 
 
         }

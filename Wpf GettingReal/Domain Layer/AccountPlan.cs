@@ -18,7 +18,7 @@ namespace Wpf_GettingReal.Domain_Layer
             YearId = startDate.Year;
             Accounts = new List<Account>();
 
-            foreach (AccountType accountId in Enum.GetValues(typeof(AccountType)))
+            foreach (int accountId in Enum.GetValues(typeof(AccountType)))
             {
 
                 string accountName = Enum.GetName(typeof(AccountType), accountId)!;

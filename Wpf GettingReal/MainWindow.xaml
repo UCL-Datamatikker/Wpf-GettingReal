@@ -5,13 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_GettingReal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1080" Width="1920">
     <Grid>
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-            <Button Name="btnCompany" Content="Company" Margin="5,5,5,5" Click="btnCompany_Click" IsEnabled="False"/>
-            <Button Name="btnIncome" Content="Income" Margin="5,5,5,5" Click="btnIncome_Click" IsEnabled="False"/>
-            <Button Name="btnExpense" Content="Expense" Margin="5,5,5,5" Click="btnExpense_Click" IsEnabled="False"/>
-            <Button Name="btnAccountOverview" Content="Overview" Margin="5,5,5,5" Click="btnOverview_Click" IsEnabled="False"/>
+            <Button Name="btnCompany" Content="Firma Side" Margin="5,5,5,5" Click="btnCompany_Click" IsEnabled="False"/>
+            <Button Name="btnIncome" Content="Ny Postering" Margin="5,5,5,5" Click="btnIncome_Click" IsEnabled="False"/>
+            <Button Name="btnAccountOverview" Content="Konto Plan" Margin="5,5,5,5" Click="btnOverview_Click" IsEnabled="False"/>
         </StackPanel>
         <Frame Name="Main" Margin="0,30,0,27" NavigationUIVisibility="Hidden"/>
         

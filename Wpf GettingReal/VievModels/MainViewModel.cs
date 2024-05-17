@@ -60,7 +60,36 @@ namespace Getting_Real_WPF.ViewModels
             {
                 _selectedAccount = value;
                 OnPropertyChanged(nameof(SelectedAccount));
-                
+                foreach (var posting in _selectedAccount.Postings)
+                {
+                    PostingCollection.Add(posting);
+                }
+            }
+        }
+
+        private ObservableCollection<Posting> _postingCollection;
+        public ObservableCollection<Posting> PostingCollection
+        {
+            get
+            {
+                return _postingCollection;
+            }
+            set
+            {
+                _postingCollection = value;
+                OnPropertyChanged(nameof(PostingCollection));
+            }
+        }
+
+        private Posting _selectedPosting;
+        public Posting SelectedPosting
+        {
+            get { return _selectedPosting; }
+            set
+            {
+                _selectedPosting = value;
+                OnPropertyChanged(nameof(SelectedPosting));
+
             }
         }
 
@@ -70,6 +99,7 @@ namespace Getting_Real_WPF.ViewModels
             this.controller = new Controller();
             AccountPlansCollection = new ObservableCollection<AccountPlan>();
             AccountCollection = new ObservableCollection<Account>();
+            PostingCollection = new ObservableCollection<Posting>();
             List<AccountPlan> accountPlans = controller.GetAllAccountPlans();
 
             foreach(AccountPlan AP in accountPlans)

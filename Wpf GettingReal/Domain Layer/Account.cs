@@ -6,12 +6,12 @@ namespace Wpf_GettingReal.Domain_Layer
     {
 
         public string AccountName { get; set; }
-        public AccountType AccountId { get; set; }
+        public int AccountId { get; set; }
         public double AccountBalance { get; set; }
 
         public List<Posting> Postings = new List<Posting>();
 
-        public Account(AccountType accountId, string accountName, double balance)
+        public Account(int accountId, string accountName, double balance)
         {
 
             AccountName = accountName;
