@@ -68,7 +68,7 @@ namespace Wpf_GettingReal.App_Layer
 
         public List<AccountPlan> GetAllAccountPlans()
         {
-            return company!.GetAllAccountPlans();
+            return company?.GetAllAccountPlans();
         } 
 
 

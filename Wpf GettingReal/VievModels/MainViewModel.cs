@@ -102,10 +102,14 @@ namespace Getting_Real_WPF.ViewModels
             PostingCollection = new ObservableCollection<Posting>();
             List<AccountPlan> accountPlans = controller.GetAllAccountPlans();
 
-            foreach(AccountPlan AP in accountPlans)
+            if (accountPlans != null)
             {
-                AccountPlansCollection.Add(AP);
+                foreach (AccountPlan AP in accountPlans)
+                {
+                    AccountPlansCollection.Add(AP);
+                }
             }
+            
         }
 
 
