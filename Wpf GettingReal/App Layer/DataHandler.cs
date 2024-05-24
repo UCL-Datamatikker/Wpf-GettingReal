@@ -10,12 +10,12 @@ namespace Wpf_GettingReal.App_Layer
         private List<AccountPlan> AccountPlans = new List<AccountPlan>(); 
         private Company? company;
 
-        private string accountFilePath; // File path for storing JSON data
+        
         private string companyFilePath;
-        public DataHandler(string accountFilePath, string companyFilePath)
+        public DataHandler( string companyFilePath)
         {
 
-            this.accountFilePath = accountFilePath;
+            
             this.companyFilePath = companyFilePath;
 
             LoadDataFromJsonFile();
@@ -49,18 +49,12 @@ namespace Wpf_GettingReal.App_Layer
             
         }
 
-        public List<AccountPlan> GetAllAccountingYears()
-        {
-            return AccountPlans;
-        }
+       
 
-        public void SaveAccountOrCompanyPlan(AccountPlan? accountPlan, Company? company)
+        public void SaveCompanyPlan(Company? company)
         {
-            // Save the accounting year to the data storage
-            if(accountPlan != null)
-            {
-                SaveDataToJsonFile(accountPlan);
-            } else if (company != null)
+            
+            if (company != null)
             {
                 SaveCompany(company);
             }
@@ -74,27 +68,7 @@ namespace Wpf_GettingReal.App_Layer
             File.WriteAllText(companyFilePath, jsonData);
         }
 
-        private void SaveDataToJsonFile(AccountPlan accountPlan)
-        {
-            // Check if the year's ID already exists in the list
-            AccountPlan existingAccountPlan = AccountPlans.FirstOrDefault(ap => ap.YearId == accountPlan.YearId);
-
-            if (existingAccountPlan != null)
-            {
-                existingAccountPlan = accountPlan;
-            }
-            else
-            {
-                // If the year doesn't exist, add it to the list
-                AccountPlans.Add(accountPlan);
-            }
-
-            // Serialize the list of accounting years to JSON format
-            string jsonData = JsonConvert.SerializeObject(AccountPlans, Formatting.Indented);
-
-            // Write the JSON data to the file
-            File.WriteAllText(accountFilePath, jsonData);
-        }
+        
 
         private void LoadDataFromJsonFile()
         {
@@ -115,28 +89,14 @@ namespace Wpf_GettingReal.App_Layer
                 else
                 {
                     // Handle case when the JSON file does not exist
-                    // For example, you might create a new JSON file or log an error message
+                    
                     Console.WriteLine("JSON file not found. Creating new file...");
-                    File.WriteAllText(companyFilePath, "{}"); // Create a new empty JSON file
+                    File.WriteAllText(companyFilePath, "{}"); 
                 }
             
             
 
-            if (File.Exists(accountFilePath))
-            {
-                // Read JSON data from the file
-                string jsonData = File.ReadAllText(accountFilePath);
-
-                // Deserialize JSON data to list of accounting years
-                AccountPlans = JsonConvert.DeserializeObject<List<AccountPlan>>(jsonData);
-            }
-            else
-            {
-                // Handle case when the JSON file does not exist
-                // For example, you might create a new JSON file or log an error message
-                Console.WriteLine("JSON file not found. Creating new file...");
-                File.WriteAllText(accountFilePath, "[]"); // Create a new empty JSON file
-            }
+            
         }
     }
 }

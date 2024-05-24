@@ -1,11 +1,7 @@
-﻿using GettingReal;
-using System.Security.Principal;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using Wpf_GettingReal;
 using Wpf_GettingReal.App_Layer;
 using Wpf_GettingReal.Domain_Layer;
-using Wpf_GettingReal.Views;
 
 namespace Getting_Real_WPF.Views
 {

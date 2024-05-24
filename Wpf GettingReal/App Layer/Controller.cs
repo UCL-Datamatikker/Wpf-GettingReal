@@ -13,7 +13,7 @@ namespace Wpf_GettingReal.App_Layer
         public Controller()
         {
            
-            dataHandler = new DataHandler("AccountPlans.txt", "Company.txt");
+            dataHandler = new DataHandler("Company.txt");
             company = dataHandler.GetCompany();
             AccountPlanRepo = company?.GetAllAccountPlans();
         }
@@ -45,7 +45,7 @@ namespace Wpf_GettingReal.App_Layer
             }
 
                 this.company = company;
-            dataHandler.SaveAccountOrCompanyPlan(null, company);
+            dataHandler.SaveCompanyPlan(company);
             } else
             {
                 return;
@@ -109,7 +109,7 @@ namespace Wpf_GettingReal.App_Layer
                 // Posting negativePosting = new Posting(posting.PostingId, posting.Date, posting.Description, -posting.Amount);
                 account.AddPosting(posting);
                 counterAccount.AddPosting(posting);
-                dataHandler.SaveAccountOrCompanyPlan(null, company);
+                dataHandler.SaveCompanyPlan(company);
             }
       
         }
@@ -117,7 +117,7 @@ namespace Wpf_GettingReal.App_Layer
         public Company UpdateCompanyInfo(string name, int cvr, string address, int telephone, string email)
         {
             company.UpdateCompanyInfo(name, cvr, address, telephone, email);
-            dataHandler.SaveAccountOrCompanyPlan(null, company);
+            dataHandler.SaveCompanyPlan(company);
 
             return company;
         }
